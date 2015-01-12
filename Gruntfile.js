@@ -6,13 +6,13 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		meta: {
 			banner:
-				'/*!\n' +
-				' * reveal.js <%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd, HH:MM") %>)\n' +
-				' * http://lab.hakim.se/reveal-js\n' +
-				' * MIT licensed\n' +
-				' *\n' +
-				' * Copyright (C) 2015 Hakim El Hattab, http://hakim.se\n' +
-				' */'
+			'/*!\n' +
+			' * reveal.js <%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd, HH:MM") %>)\n' +
+			' * http://lab.hakim.se/reveal-js\n' +
+			' * MIT licensed\n' +
+			' *\n' +
+			' * Copyright (C) 2015 Hakim El Hattab, http://hakim.se\n' +
+			' */'
 		},
 
 		qunit: {
@@ -96,27 +96,27 @@ module.exports = function(grunt) {
 				options: {
 					port: port,
 					base: '.',
-                    livereload: true,
-                    open: true
+					livereload: true,
+					open: true
 				}
 			}
 		},
 
 		zip: {
 			'reveal-js-presentation.zip': [
-				'index.html',
-				'css/**',
-				'js/**',
-				'lib/**',
-				'images/**',
-				'plugin/**'
+			'index.html',
+			'css/**',
+			'js/**',
+			'lib/**',
+			'images/**',
+			'plugin/**'
 			]
 		},
 
 		watch: {
-            options: {
-                livereload: true
-            },
+			options: {
+				livereload: true
+			},
 			js: {
 				files: [ 'Gruntfile.js', 'js/reveal.js' ],
 				tasks: 'js'
@@ -129,11 +129,13 @@ module.exports = function(grunt) {
 				files: [ 'css/reveal.scss' ],
 				tasks: 'css-core'
 			},
-            html: {
-                files: [ 'index.html']
-            }
+			html: {
+				files: [ 'index.html']
+			},
+			markdown: {
+				files: ['talk.md']
+			}
 		}
-
 	});
 
 	// Dependencies
