@@ -131,6 +131,44 @@ A partir de ces spécifications des bibliothèques permettent la compatibilité.
 
 # Custom Element
 
+> Provide a way for Web developers to build their own, fully-featured DOM elements.
+> Rationalize the platform. [W3C](http://w3c.github.io/webcomponents/spec/custom/#dfn-help-web-developers)
+
+--
+
+Les `Custom Elements` sont des objets dont l'interface est défini par le développeur.
+
+Les nouveaux éléments DOM ainsi créées permettent de :
+
+1. Définir des nouveaux éléments HTML/DOM
+1. Etendre d'autres éléments ex. : [HTMLButtonElement](https://developer.mozilla.org/en/docs/Web/API/HTMLButtonElement)
+1. Encapsuler des fonctionnalités sur mesure
+1. Etendre l'API d'élément HTML/DOM existants
+
+--
+
+## Définir un nouvel élément
+
+Doit contenir un caractère`U+002D HYPHEN-MINUS` et **ne doit pas** contenir des caractères ASCII en majuscule. [W3C](http://w3c.github.io/webcomponents/spec/custom/#dfn-custom-element-type).
+
+Certains noms sont réservées :
+
+* annotation-xml
+* color-profile
+* font-face
+* font-face-src
+* [...](http://w3c.github.io/webcomponents/spec/custom/#dfn-custom-element-type)
+
+--
+
+
+## Cycle de vie
+
+1. création de l'élément avant qu'il soit enregistré
+1. la définition du nouvel élément est enregistrée
+1. l'instance de l'élément est créé après que la définition soit enregirstré
+1. l'élément
+
 ---
 
 # HTML Templates
