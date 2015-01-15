@@ -142,11 +142,14 @@ body {
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); }
 
 .reveal code {
-  font-family: monospace; }
+  background: #3F3F3F;
+  border-radius: .2em;
+  color: #DCDCDC;
+  padding: 0 .2em; }
 
 .reveal pre code {
   display: block;
-  padding: 5px;
+  padding: 10px;
   overflow: auto;
   max-height: 400px;
   word-wrap: normal;
