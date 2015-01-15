@@ -10,8 +10,9 @@
 
 * Aujourd'hui
 * Réponse ciblée
-* Code d'honneur
-* Déserteurs
+* Renforts
+* Règlement
+* Caserne
 
 ---
 
@@ -62,7 +63,7 @@ Le code du plugin est partagé avec celui de la page : collisions multiples.
 
 --
 
-# We need
+# Réponse ciblée
 > ENCAPSULATION
 
 ---
@@ -88,9 +89,9 @@ Le navigateur se charge de résoudre `my-zooka` et d'encapsuler le markup dans u
 Les web components sont un ensemble de technologies :
 
 * [Custom Element](http://www.html5rocks.com/en/tutorials/webcomponents/customelements/)
-* [Shadow DOM](http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/)
 * [HTML Templates](http://www.html5rocks.com/en/tutorials/webcomponents/template/)
-* [HTML imports](http://www.html5rocks.com/en/tutorials/webcomponents/imports/)
+* [HTML Imports](http://www.html5rocks.com/en/tutorials/webcomponents/imports/)
+* [Shadow DOM](http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/)
 
 
 ---
@@ -103,6 +104,17 @@ Depuis *juillet 2014* la [W3C](http://www.w3.org/wiki/WebComponents/) propose un
 
 --
 
+## Tableau des compatibilités
+
+![tableau des compatibilités](image/compatibility_tab.png)
+> <span style="color: yellow">jaune</span> : en cours de développement
+<br/>
+> <span style="color: green">vert</span> : presque terminé
+
+source : [are-we-componentized-yet](http://jonrimmer.github.io/are-we-componentized-yet/)
+
+--
+
 A partir de ces spécifications des bibliothèques permettent la compatibilité.
 
 * [Polyfill](http://webcomponents.org/polyfills/)
@@ -111,9 +123,9 @@ A partir de ces spécifications des bibliothèques permettent la compatibilité.
 * [Brick](http://bricksjs.com/index.html)
 * [Bosonic](http://bosonic.github.io/)
 
---
+---
 
-## Tableau des compatibilités
+# Caserne
 
 ---
 
@@ -121,19 +133,19 @@ A partir de ces spécifications des bibliothèques permettent la compatibilité.
 
 ---
 
+# HTML Templates
+
+---
+
+# HTML Imports
+
+---
+
 # Shadow DOM
 
 ---
 
-# HTML Template
-
----
-
-# HTML Import
-
----
-
-# Prêt pour la bataille
+# Prêt pour la bataille ?
 
 ---
 
