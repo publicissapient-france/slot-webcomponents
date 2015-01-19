@@ -298,7 +298,7 @@ Template (insertion points)
 
 --
 
-#### Shadow boundary
+### Shadow boundary
 
 * Selectors don't cross the shadow boundary
 * Style encapsulation from the outside world
