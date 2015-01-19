@@ -181,6 +181,8 @@ Certains noms sont réservées :
 
 # Shadow DOM
 
+> Encapsulation in action
+
 --
 
 #### Les développeurs doivent pouvoir agir<br> comme les éditeurs de navigateurs
@@ -405,7 +407,6 @@ Host
 
 ### CSS Variables
 
-
 Shadow
 ```html
 <template id="nameTagTemplate">
@@ -432,6 +433,85 @@ Host
 ---
 
 # Communication
+
+--
+
+## Component ⇾ Host
+
+* par evenements
+
+--
+
+### Par evenements
+
+Component ⇾
+```javascript
+var proto = Object.create(HTMLElement.prototype);
+proto.createdCallback = function() {
+	// shadow DOM management ...
+
+	this.addEventListener('click', function(e) {
+		this.dispatchEvent(new Event('my-event'));
+	});
+};
+document.registerElement('x-element', {prototype: proto});
+```
+
+⇾ Host
+```javascript
+document.addEventListener('my-event', function (event) {
+    // logic
+}, true);
+```
+
+--
+
+## Host ⇾ Component
+
+* par surveillance des attibuts
+* par des méthodes du prototype
+
+--
+
+### Par surveillance des attibuts
+
+Host ⇾
+```javascript
+var xElement = document.querySelector('x-element');
+xElement.setAttribute('myAttr', 'myValue');
+```
+
+⇾ Component
+```javascript
+var proto = Object.create(HTMLElement.prototype);
+proto.createdCallback =  ...
+proto.attributeChangedCallback = function(attrName, oldVal, newVal) {
+    // logic
+};
+
+document.registerElement('x-element', {prototype: proto});
+```
+
+--
+
+### Par methodes sur prototype
+
+Host ⇾
+```javascript
+var xElement = document.querySelector('x-element');
+xElement.addSomeBehaviour(data);
+```
+
+⇾ Component
+```javascript
+var proto = Object.create(HTMLElement.prototype);
+proto.createdCallback =  ...
+proto.addSomeBehaviour = function(data) {
+    // logic
+};
+
+document.registerElement('x-element', {prototype: proto});
+```
 
 ---
 
