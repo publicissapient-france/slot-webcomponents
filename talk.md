@@ -181,6 +181,258 @@ Certains noms sont réservées :
 
 # Shadow DOM
 
+--
+
+#### Les développeurs doivent pouvoir agir<br> comme les éditeurs de navigateurs
+
+--
+
+### Vendor element
+
+```<input type="date">```
+
+![Input date](image/input_date.png)
+
+--
+
+## Shadow boundary
+
+--
+
+### Example
+
+Shadow host
+```html
+<div id="nameTag">Bob</div>
+```
+
+Shadow root
+```html
+<template id="nameTagTemplate">
+<style>
+   div { color: red; }
+</style>
+<div>
+    My name is <content></content>
+</div>
+</template>
+```
+
+```javascript
+var shadow = document.querySelector('#nameTag').createShadowRoot();
+var template = document.querySelector('#nameTagTemplate');
+var clone = document.importNode(template.content, true);
+shadow.appendChild(clone);
+```
+
+--
+
+## Insertion points
+
+* sont les invitations pour le contenue
+* ne deplacent pas le DOM
+* projection de DOM
+
+<br>
+```<content select="">```
+
+
+
+--
+
+## Distributions
+
+A `distribution` is the mechanism that determines which nodes appear at each insertion point. [W3C](http://w3c.github.io/webcomponents/spec/shadow/#distributions)
+
+--
+
+#### Simple Distribution
+![Distributions](image/distributions.png)
+
+--
+
+### Example #1
+
+Shadow host
+```html
+<div id="nameTag">
+    <span class="name">Bob</span>
+    <span class="age">21</span>
+</div>
+```
+
+Template (insertion points)
+```html
+<template id="nameTagTemplate">
+<div>
+    My name is <content select=".name"></content>.
+    I’m <content select=".age"></content> years old.
+</div>
+</template>
+```
+--
+
+### Example #2
+
+Shadow host
+```html
+<div id="nameTag">
+    <span class="name">Bob</span>
+    <span class="age">21</span>
+</div>
+```
+
+Template (insertion points)
+```html
+<template id="nameTagTemplate">
+<div>
+    My name is <content select="span"></content>.
+    I’m <content select=".age"></content> years old.
+</div>
+</template>
+```
+
+--
+
+## Styling
+
+--
+
+#### Shadow boundary
+
+* Selectors don't cross the shadow boundary
+* Style encapsulation from the outside world
+
+--
+
+### Styling the host element
+
+Host
+```html
+<button class="btn">My Button</button>
+```
+
+Shadow
+```html
+<style>
+ :host { text-transform: uppercase; }
+ :host(.btn) { color: blue; }
+ :host(:hover) { color: red; }
+</style>
+```
+
+--
+
+### Theming an element
+
+Host
+```html
+<body class="theme-big">
+<div id="nameTag">
+    <span>Tom</span>
+</div>
+</body>
+```
+
+Shadow
+```html
+<style>
+	:host-context(.theme-big) { font-size: 2em; }
+	:host-context(.theme-small) { font-size: .5em; }
+</style>
+```
+--
+
+### Styling Shadow DOM internals
+
+* `::shadow` pseudo-element
+
+* `/deep/` combinator
+
+
+--
+
+### `::shadow`
+
+Permet de percer à travers d'un Shadow DOM's boundary
+
+
+DOM
+```html
+<div id="nameTag" class="btn">
+  #shadow-root
+  |   <span class="level-1">Web</span>
+  |   <x-div>
+  |     #shadow-root
+  |     |   <span class="level-2">Components</span>
+  |   </x-div>
+</div>
+```
+
+Host
+```html
+<style>
+#nameTag::shadow .level-1 { background: red; }
+#nameTag::shadow x-div::shadow .level-2 { background: green; }
+</style>
+```
+
+--
+
+### `/deep/`
+Ignores all shadow boundaries
+
+DOM
+```html
+<div id="nameTag" class="btn">
+  #shadow-root
+  |   <span class="level-1">Web</span>
+  |   <x-div>
+  |     #shadow-root
+  |     |   <span class="level-2">Components</span>
+  |   </x-div>
+</div>
+```
+
+Host
+```html
+<style>
+#nameTag /deep/ .level-2 { color: orange; }
+</style>
+```
+
+--
+
+### CSS Variables
+
+
+Shadow
+```html
+<template id="nameTagTemplate">
+<style>
+   span {
+      color: var(--my-text-color, pink);
+   }
+</style>
+<span>WebComponents</span>
+</template>
+```
+
+Host
+```html
+<style>
+ #host {
+   --my-text-color: green;
+ }
+</style>
+```
+
+[Disponible](http://caniuse.com/#feat=css-variables) seulement sur Firefox
+
+---
+
+# Communication
+
 ---
 
 # Prêt pour la bataille ?
