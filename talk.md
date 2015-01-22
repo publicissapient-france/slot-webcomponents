@@ -164,8 +164,6 @@ Certains noms sont réservées :
 
 Le `Custom Element` traverse différents états durant son [cycle de vie](http://w3c.github.io/webcomponents/spec/custom/#dfn-lifecycle-callbacks).
 
-Les callbacks suivants sont disponible :
-
 * `createdCallback` appelé après la création et l'enregistrement de la définition de l'élément.
 * `attachedCallback` appelé à l'insertion de l'élément dans le document lorsque celui-ci a un contexte.
 * `detachedCallback` appelé à la suppression de l'élément du document lorsque celui-ci a un contexte.
@@ -173,7 +171,7 @@ Les callbacks suivants sont disponible :
 
 --
 
-### Les `Custom Elements` sont créé en utilisant `document.registerElement()` :
+#### Les `Custom Elements` sont créé en utilisant `document.registerElement()` :
 
 ```javascript
 var ZookaButton = document.registerElement('zooka-button');
@@ -187,7 +185,7 @@ var ZookaButton = document.registerElement('zooka-button');
 
 --
 
-### Le `Custom Element` est configurable à travers son prototype.
+#### Le `Custom Element` est configurable à travers son prototype.
 
 ```javascript
 var ZookaButtonPrototype = Object.create(HTMLElement.prototype);
@@ -199,7 +197,7 @@ document.registerElement('zooka-button', {prototype: ZookaButtonPrototype});
 
 --
 
-### Avec des `callbacks` c'est mieux :).
+#### Avec des `callbacks` c'est mieux :).
 
 ```javascript
 var ZookaButtonPrototype = Object.create(HTMLElement.prototype);
@@ -216,7 +214,7 @@ document.registerElement('zooka-button',
 
 --
 
-### On change le contenu du `Custom Element` ?
+#### On change le contenu du `Custom Element` ?
 ```javascript
 var ZookaButtonPrototype = Object.create(HTMLElement.prototype);
 ZookaButtonPrototype.who = function() {...}
@@ -233,9 +231,79 @@ document.registerElement('zooka-button',
 
 # HTML Templates
 
+--
+
+#### Possibilité d'utiliser des templates HTML
+
+```html
+<template id="zooka-template">
+  <b>I am a zooka button from template</b>
+</template>
+```
+```javascript
+var ZookaButtonPrototype = Object.create(HTMLElement.prototype);
+ZookaButtonPrototype.who = function() {...}
+ZookaButtonPrototype.createdCallback = function() {
+  this.addEventListener('click', function(e) {...});
+  var template = document.getElementById('zooka-template');
+  var clone = document.importNode(template.content, true);
+  this.innerHTML = clone;
+}
+document.registerElement('zooka-button',
+{prototype: ZookaButtonPrototype});
+```
+[Exemple](example/custom-element2.html)
+
 ---
 
 # HTML Imports
+
+> Stocker toute la déclaration d'un web components dans un fichier externe.
+
+--
+
+#### Pourquoi ?
+
+Un import HTML aujourd'hui c'est :
+
+* `<iframe>`
+* `ajax`
+* encapsulé dans des balises `<script>`
+
+> Génial ! ... ou pas.
+
+--
+
+## Les web components apportent la solution !
+
+--
+
+```html
+<template>...</template>
+```
+```javascript
+(function() {
+  var importDoc = document.currentScript.ownerDocument;
+  var ZookaButtonPrototype = Object.create(HTMLElement.prototype);
+  ZookaButtonPrototype.who = function() {...}
+  ZookaButtonPrototype.createdCallback = function() {...}
+  document.registerElement('zooka-button',
+    {prototype: ZookaButtonPrototype});
+})()
+```
+
+```html
+<html>
+  <head>
+    <link rel="import" href="zooka-button.html">
+  </head>
+  <body></body>
+</html>
+```
+
+[Exemple](example/custom-element3.html)
+
+> Attention au CORS.
 
 ---
 

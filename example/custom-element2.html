@@ -1,0 +1,25 @@
+<html>
+  <body>
+    <zooka-button></zooka-button>
+    <template id="zooka-template">
+      <i>I am a zooka from template</i>
+    </template>
+    <script>
+      (function() {
+        var ZookaButtonPrototype = Object.create(HTMLElement.prototype);
+        ZookaButtonPrototype.who = function() {
+          alert('Zooka!');
+        }
+        ZookaButtonPrototype.createdCallback = function() {
+          this.addEventListener('click', function(e) {
+            ZookaButtonPrototype.who();
+          });
+          var template = document.getElementById('zooka-template');
+          var clone = document.importNode(template.content, true); // node, deep (import descendant)
+          this.appendChild(clone);
+        }
+        document.registerElement('zooka-button', {prototype: ZookaButtonPrototype});
+      })();
+    </script>
+  </body>
+</html>
