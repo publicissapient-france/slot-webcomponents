@@ -145,7 +145,8 @@ body {
   background: #3F3F3F;
   border-radius: .2em;
   color: #DCDCDC;
-  padding: 0 .2em; }
+  padding: 0 .2em;
+  font-family: monospace; }
 
 .reveal pre code {
   display: block;

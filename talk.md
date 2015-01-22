@@ -24,7 +24,8 @@
 
 * jQuery plugins
 * directives AngularJS
-* Vues BackbonesJS
+* vues BackbonesJS
+* etc.
 
 --
 
@@ -107,9 +108,6 @@ Depuis *juillet 2014* la [W3C](http://www.w3.org/wiki/WebComponents/) propose un
 ## Tableau des compatibilités
 
 ![tableau des compatibilités](image/compatibility_tab.png)
-> <span style="color: yellow">jaune</span> : en cours de développement
-<br/>
-> <span style="color: green">vert</span> : presque terminé
 
 source : [are-we-componentized-yet](http://jonrimmer.github.io/are-we-componentized-yet/)
 
@@ -149,7 +147,7 @@ Les nouveaux éléments DOM ainsi créées permettent de :
 
 ## Définir un nouvel élément
 
-Doit contenir un caractère`U+002D HYPHEN-MINUS` et **ne doit pas** contenir des caractères ASCII en majuscule. [W3C](http://w3c.github.io/webcomponents/spec/custom/#dfn-custom-element-type).
+Le nom du composant doit contenir un caractère`U+002D HYPHEN-MINUS` et **ne doit pas** contenir des caractères ASCII en majuscule. [W3C](http://w3c.github.io/webcomponents/spec/custom/#dfn-custom-element-type).
 
 Certains noms sont réservées :
 
@@ -162,12 +160,74 @@ Certains noms sont réservées :
 --
 
 
-## Cycle de vie
+## Cycle de vie et callbacks
 
-1. création de l'élément avant qu'il soit enregistré
-1. la définition du nouvel élément est enregistrée
-1. l'instance de l'élément est créé après que la définition soit enregirstré
-1. l'élément
+Le `Custom Element` traverse différents états durant son [cycle de vie](http://w3c.github.io/webcomponents/spec/custom/#dfn-lifecycle-callbacks).
+
+Les callbacks suivants sont disponible :
+
+* `createdCallback` appelé après la création et l'enregistrement de la définition de l'élément.
+* `attachedCallback` appelé à l'insertion de l'élément dans le document lorsque celui-ci a un contexte.
+* `detachedCallback` appelé à la suppression de l'élément du document lorsque celui-ci a un contexte.
+* `attributeChangedCallback` appelé au changement d'attributs de l'élément.
+
+--
+
+### Les `Custom Elements` sont créé en utilisant `document.registerElement()` :
+
+```javascript
+var ZookaButton = document.registerElement('zooka-button');
+```
+```html
+<body>
+  <zooka-button>Zooka</zooka-button>
+</body>
+```
+> Par défault les `Custom Elements` héritent de `HTMLElement`.
+
+--
+
+### Le `Custom Element` est configurable à travers son prototype.
+
+```javascript
+var ZookaButtonPrototype = Object.create(HTMLElement.prototype);
+ZookaButtonPrototype.who = function() {
+  alert('Zooka!');
+}
+document.registerElement('zooka-button', {prototype: ZookaButtonPrototype});
+```
+
+--
+
+### Avec des `callbacks` c'est mieux :).
+
+```javascript
+var ZookaButtonPrototype = Object.create(HTMLElement.prototype);
+ZookaButtonPrototype.who = function() {...}
+ZookaButtonPrototype.createdCallback = function() {
+  this.addEventListener('click', function(e) {
+    ZookaButtonPrototype.who();
+  });
+}
+document.registerElement('zooka-button',
+  {prototype: ZookaButtonPrototype});
+```
+[Exemple](example/custom-element0.html)
+
+--
+
+### On change le contenu du `Custom Element` ?
+```javascript
+var ZookaButtonPrototype = Object.create(HTMLElement.prototype);
+ZookaButtonPrototype.who = function() {...}
+ZookaButtonPrototype.createdCallback = function() {
+  this.addEventListener('click', function(e) {...});
+  this.innerHTML = "<b>I am a Zooka button</b>";
+}
+document.registerElement('zooka-button',
+  {prototype: ZookaButtonPrototype});
+```
+[Exemple](example/custom-element1.html)
 
 ---
 

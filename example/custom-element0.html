@@ -1,0 +1,19 @@
+<html>
+  <body>
+    <zooka-button>Zooka</zooka-button>
+    <script>
+      (function() {
+        var ZookaButtonPrototype = Object.create(HTMLElement.prototype);
+        ZookaButtonPrototype.who = function() {
+          alert('Zooka!');
+        }
+        ZookaButtonPrototype.createdCallback = function() {
+          this.addEventListener('click', function(e) {
+            ZookaButtonPrototype.who();
+          });
+        }
+        document.registerElement('zooka-button', {prototype: ZookaButtonPrototype});
+      })();
+    </script>
+  </body>
+</html>
