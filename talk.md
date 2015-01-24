@@ -531,59 +531,59 @@ DOM Généré
 
 ### Styling the host element
 
+> `:host` selector
+
 [Example](example/styling-0.html)
 
-Host
 ```html
-<button class="btn">Zooka</button>
-```
-
-Shadow
-```html
-<template id="regionTemplate">
-  <style>
-    :host { text-transform: uppercase; }
-    :host(.btn) { color: blue; }
-    :host(:hover) { color: red; }
-  </style>
-  <div> <content></content> </div>
-</template>
-```
-
-```javascript
-var shadow = document.querySelector('button').createShadowRoot();
-var template = document.getElementById('regionTemplate');
-shadow.appendChild(document.importNode(template.content, true));
+<button class="btn">
+  #shadow-root
+  |  <style>
+  |    :host { text-transform: uppercase; }
+  |    :host(.btn) { color: blue; }
+  |    :host(:hover) { color: red; }
+  |  </style>
+  |  <div>
+  |    <content></content>
+  |  </div>
+  "Zooka"
+</button>
 ```
 
 --
 
 ### Context (Thèmes)
 
-Host
+> `:host-context` selector
+
+[Example](example/styling-1.html)
+
 ```html
-<body class="theme-big">
-<div id="nameTag">
-    <span>Tom</span>
-</div>
+<body class="offensive">
+  <button class="btn">
+    #shadow-root
+    |  <style>
+    |    :host-context(.defensive) { color: green }
+    |    :host-context(.offensive) { color: red }
+    |  </style>
+    |  <div>
+    |    <content></content>
+    |  </div>
+    "Zooka"
+  </button>
 </body>
 ```
 
-Shadow
-```html
-<style>
-	:host-context(.theme-big) { font-size: 2em; }
-	:host-context(.theme-small) { font-size: .5em; }
-</style>
-```
 --
 
 ### Styling Shadow DOM internals
+(depuis l'exterieur)
+
+<br>
 
 * `::shadow` pseudo-element
 
 * `/deep/` combinator
-
 
 --
 
@@ -594,45 +594,46 @@ Permet de percer à travers d'un Shadow DOM's boundary
 
 DOM
 ```html
-<div id="nameTag" class="btn">
+<div id="buildings">
   #shadow-root
-  |   <span class="level-1">Web</span>
-  |   <x-div>
-  |     #shadow-root
-  |     |   <span class="level-2">Components</span>
-  |   </x-div>
+  |  <span class="level-1">Outpost</span>
+  |  <x-div>
+  |    #shadow-root
+  |    |  <span class="level-2">Radar</span>
+  |  </x-div>
 </div>
 ```
 
 Host
 ```html
 <style>
-#nameTag::shadow .level-1 { background: red; }
-#nameTag::shadow x-div::shadow .level-2 { background: green; }
+#buildings::shadow .level-1 { background: red; }
+#buildings::shadow x-div::shadow .level-2 { background: green; }
 </style>
 ```
 
 --
 
 ### `/deep/`
+
 Ignores all shadow boundaries
 
 DOM
 ```html
-<div id="nameTag" class="btn">
+<div id="troops">
   #shadow-root
-  |   <span class="level-1">Web</span>
-  |   <x-div>
-  |     #shadow-root
-  |     |   <span class="level-2">Components</span>
-  |   </x-div>
+  |  <span class="level-1">Heavy</span>
+  |  <x-div>
+  |    #shadow-root
+  |    |  <span class="level-2">Medic</span>
+  |  </x-div>
 </div>
 ```
 
 Host
 ```html
 <style>
-#nameTag /deep/ .level-2 { color: orange; }
+#troops /deep/ .level-2 { color: orange; }
 </style>
 ```
 
@@ -684,15 +685,15 @@ proto.createdCallback = function() {
 	// shadow DOM management ...
 
 	this.addEventListener('click', function(e) {
-		this.dispatchEvent(new Event('my-event'));
+		this.dispatchEvent(new Event('fire-tank'));
 	});
 };
-document.registerElement('x-element', {prototype: proto});
+document.registerElement('boom-tank', {prototype: proto});
 ```
 
 ⇾ Host
 ```javascript
-document.addEventListener('my-event', function (event) {
+document.addEventListener('fire-tank', function (event) {
     // logic
 }, true);
 ```
@@ -710,8 +711,8 @@ document.addEventListener('my-event', function (event) {
 
 Host ⇾
 ```javascript
-var xElement = document.querySelector('x-element');
-xElement.setAttribute('myAttr', 'myValue');
+var xElement = document.querySelector('boom-grenadier');
+xElement.setAttribute('action', 'launch');
 ```
 
 ⇾ Component
@@ -722,7 +723,7 @@ proto.attributeChangedCallback = function(attrName, oldVal, newVal) {
     // logic
 };
 
-document.registerElement('x-element', {prototype: proto});
+document.registerElement('boom-grenadier', {prototype: proto});
 ```
 
 --
@@ -731,19 +732,19 @@ document.registerElement('x-element', {prototype: proto});
 
 Host ⇾
 ```javascript
-var xElement = document.querySelector('x-element');
-xElement.addSomeBehaviour(data);
+var xElement = document.querySelector('boom-zooka');
+xElement.fireWithBazooka(forceLevel);
 ```
 
 ⇾ Component
 ```javascript
 var proto = Object.create(HTMLElement.prototype);
 proto.createdCallback =  ...
-proto.addSomeBehaviour = function(data) {
+proto.fireWithBazooka = function(data) {
     // logic
 };
 
-document.registerElement('x-element', {prototype: proto});
+document.registerElement('boom-zooka', {prototype: proto});
 ```
 
 ---

@@ -1,0 +1,28 @@
+<html>
+<body class="offensive">
+
+  <div id="unitName">Tank</div>
+
+<template id="regionTemplate">
+  <style>
+    :host-context(.defensive) {
+      color: green
+    }
+
+    :host-context(.offensive) {
+      color: red
+    }
+  </style>
+  <div>
+    <content></content>
+  </div>
+</template>
+
+<script>
+  var shadow = document.getElementById('unitName').createShadowRoot();
+  var template = document.getElementById('regionTemplate');
+  shadow.appendChild(document.importNode(template.content, true));
+</script>
+
+</body>
+</html>
