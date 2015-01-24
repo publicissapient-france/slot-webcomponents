@@ -315,6 +315,8 @@ Un import HTML aujourd'hui c'est :
 
 #### Les développeurs doivent pouvoir agir<br> comme les éditeurs de navigateurs
 
+[Mark Dalgleish](http://markdalgleish.com/)
+
 --
 
 ### Vendor element
@@ -325,20 +327,28 @@ Un import HTML aujourd'hui c'est :
 
 --
 
+### Vendor element
+
+```<input type="date">```
+
+![Input date](image/input_date_shadow.png)
+
+--
+
 ## Shadow boundary
 
 --
 
-### Example
+### [Example](example/shadow-dom-0.html)
 
 Shadow host
 ```html
-<div id="nameTag">Bob</div>
+<div id="boomBeachName">Rifleman</div>
 ```
 
 Shadow root
 ```html
-<template id="nameTagTemplate">
+<template id="headquartersTemplate">
 <style>
    div { color: red; }
 </style>
@@ -349,78 +359,162 @@ Shadow root
 ```
 
 ```javascript
-var shadow = document.querySelector('#nameTag').createShadowRoot();
-var template = document.querySelector('#nameTagTemplate');
+var shadow = document.getElementById('boomBeachName').createShadowRoot();
+var template = document.getElementById('headquartersTemplate');
 var clone = document.importNode(template.content, true);
 shadow.appendChild(clone);
 ```
 
 --
 
+### Resultat
+
+Rendering
+
+![Rileman](image/shadow-dom-0.png)
+
+DOM Généré
+```html
+<div id="boomBeachName">
+  #shadow-root
+  |  <style>
+  |    div {
+  |      color: red;
+  |    }
+  |  </style>
+  |  <div>
+  |     My name is <content></content>
+  |  </div>
+  "Rifleman"
+</div>
+```
+
+--
+
 ## Insertion points
+
+```<content select="">```
+<br>
+<br>
 
 * sont les invitations pour le contenue
 * ne deplacent pas le DOM
 * projection de DOM
 
-<br>
-```<content select="">```
-
-
-
 --
 
-## Distributions
-
-A `distribution` is the mechanism that determines which nodes appear at each insertion point. [W3C](http://w3c.github.io/webcomponents/spec/shadow/#distributions)
-
---
-
-#### Simple Distribution
+### Distribution
 ![Distributions](image/distributions.png)
 
 --
 
-### Example #1
+### [Example #1](example/shadow-dom-1.html)
 
 Shadow host
 ```html
-<div id="nameTag">
-    <span class="name">Bob</span>
-    <span class="age">21</span>
+<div id="boomUnit">
+    <span class="unit-name">Grenadier</span>
+    <span class="training-time">15 minutes</span>
+    <span class="hq-level">16</span>
 </div>
 ```
 
-Template (insertion points)
+Shadow element
 ```html
-<template id="nameTagTemplate">
+<template id="unitTemplate">
 <div>
-    My name is <content select=".name"></content>.
-    I’m <content select=".age"></content> years old.
+    Unit name: <content select=".unit-name"></content> <br>
+    Training time: <content select=".training-time"></content> <br>
+    HQ Level: <content select=".hq-level"></content>
 </div>
 </template>
 ```
+
+```javascript
+var shadow = document.getElementById('boomUnit').createShadowRoot();
+var template = document.getElementById('unitTemplate');
+shadow.appendChild(document.importNode(template.content, true));
+```
+
 --
 
-### Example #2
+### [Resultat #1](example/shadow-dom-1.html)
+
+Rendering
+
+![Rileman](image/shadow-dom-1.png)
+
+DOM Généré
+```html
+<div id="boomUnit">
+  #shadow-root
+  |  <div>
+  |     Unit name: <content select=".unit-name"></content> <br>
+  |     Training time: <content select=".training-time"></content> <br>
+  |     HQ Level: <content select=".hq-level"></content> <br>
+  |  </div>
+  <span class="unit-name">Grenadier</span>
+  <span clas="training-time">15 minutes</span>
+  <span class="hq-level">16</span>
+</div>
+```
+
+--
+
+### [Example #2](example/shadow-dom-2.html)
 
 Shadow host
 ```html
-<div id="nameTag">
-    <span class="name">Bob</span>
-    <span class="age">21</span>
+<div id="boomUnit">
+    <span class="unit-name">Grenadier</span>
+    <span class="training-time">15 minutes (training) </span>
+    <span class="hq-level">16 (HQ)</span>
 </div>
 ```
 
-Template (insertion points)
+Shadow element
 ```html
-<template id="nameTagTemplate">
+<template id="unitTemplate">
 <div>
-    My name is <content select="span"></content>.
-    I’m <content select=".age"></content> years old.
+    Unit: <content select=".unit-name"></content> <br>
+    Qualities: <content select="span"></content>
 </div>
 </template>
 ```
+
+```javascript
+var shadow = document.getElementById('boomUnit').createShadowRoot();
+var template = document.getElementById('unitTemplate');
+shadow.appendChild(document.importNode(template.content, true));
+```
+
+--
+
+### [Resultat #2](example/shadow-dom-2.html)
+
+Rendering
+
+![Rileman](image/shadow-dom-2.png)
+
+DOM Généré
+```html
+<div id="boomUnit">
+  #shadow-root
+  |  <div>
+  |    Unit: <content select=".unit-name"></content> <br>
+  |    Qualities: <content select="span"></content>
+  |  </div>
+  <span class="unit-name">Grenadier</span>
+  <span class="training-time">15 minutes</span>
+  <span class="hq-level">16</span>
+</div>
+```
+
+--
+
+## [Shadow DOM Visualizer](http://html5-demos.appspot.com/static/shadowdom-visualizer/index.html)
+
+> By Eric Bidelman
 
 --
 
@@ -430,30 +524,41 @@ Template (insertion points)
 
 ### Shadow boundary
 
-* Selectors don't cross the shadow boundary
-* Style encapsulation from the outside world
+* Selectors ne traversent pas le shadow boundary
+* Encapsulation des styles du monde externe
 
 --
 
 ### Styling the host element
 
+[Example](example/styling-0.html)
+
 Host
 ```html
-<button class="btn">My Button</button>
+<button class="btn">Zooka</button>
 ```
 
 Shadow
 ```html
-<style>
- :host { text-transform: uppercase; }
- :host(.btn) { color: blue; }
- :host(:hover) { color: red; }
-</style>
+<template id="regionTemplate">
+  <style>
+    :host { text-transform: uppercase; }
+    :host(.btn) { color: blue; }
+    :host(:hover) { color: red; }
+  </style>
+  <div> <content></content> </div>
+</template>
+```
+
+```javascript
+var shadow = document.querySelector('button').createShadowRoot();
+var template = document.getElementById('regionTemplate');
+shadow.appendChild(document.importNode(template.content, true));
 ```
 
 --
 
-### Theming an element
+### Context (Thèmes)
 
 Host
 ```html

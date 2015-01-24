@@ -1,0 +1,26 @@
+<html>
+<body>
+
+<div id="boomUnit">
+  <span class="unit-name">Grenadier</span>
+  <span class="training-time">15 minutes</span>
+  <span class="hq-level">16</span>
+</div>
+
+<template id="unitTemplate">
+  <div>
+    Unit name: <content select=".unit-name"></content> <br>
+    Training time: <content select=".training-time"></content> <br>
+    HQ Level: <content select=".hq-level"></content> <br>
+  </div>
+</template>
+
+<script>
+var shadow = document.getElementById('boomUnit').createShadowRoot();
+var template = document.getElementById('unitTemplate');
+shadow.appendChild(document.importNode(template.content, true));
+</script>
+
+
+</body>
+</html>
