@@ -382,8 +382,8 @@ DOM Généré
 
 ## Insertion points
 
-```<content select="">```
-<br>
+> `<content select="">` tag
+
 <br>
 
 * sont les invitations pour le contenue
@@ -509,7 +509,7 @@ DOM Généré
 
 --
 
-## Styling
+# Styling
 
 --
 
@@ -520,7 +520,7 @@ DOM Généré
 
 --
 
-### Styling the host element
+### Styling 'host element'
 
 > `:host` selector
 
@@ -551,7 +551,7 @@ DOM Généré
 
 ```html
 <body class="offensive">
-  <div id="unitName">
+  <div id="boomUnit">
     #shadow-root
     |  <style>
     |    :host-context(.defensive) { color: green; }
@@ -567,20 +567,43 @@ DOM Généré
 
 --
 
+### Styling 'Distribution Nodes'
+
+> `::content` pseudo-element
+
+[Example](example/styling-2.html)
+
+```html
+<div id="boomUnit">
+  #shadow-root
+  |  <style>
+  |    ::content div { color: grey; }
+  |    ::content div.unit-name { color: red; }
+  |  </style>
+  |  <div>
+  |    <content></content>
+  |  </div>
+  <div class="unit-name">Grenadier</div>
+  <div class="training-time">15 minutes</div>
+  <div class="hq-level">16</div>
+</div>
+```
+
+--
+
 ### Styling Shadow DOM internals
 (depuis l'exterieur)
 
 <br>
 
-* `::shadow` pseudo-element
-
-* `/deep/` combinator
+> * `::shadow` pseudo-element
+> * `/deep/` combinator
 
 --
 
 ### `::shadow`
 
-Permet de percer à travers d'un Shadow DOM's boundary
+Permet de percer à travers d'un Shadow DOM boundary
 
 
 DOM

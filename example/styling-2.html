@@ -1,12 +1,16 @@
 <html>
 <body class="offensive">
 
-  <div id="boomUnit">Tank</div>
+<div id="boomUnit">
+  <div class="unit-name">Grenadier</div>
+  <div class="training-time">15 minutes</div>
+  <div class="hq-level">16</div>
+</div>
 
 <template id="regionTemplate">
   <style>
-    :host-context(.defensive) { color: green; }
-    :host-context(.offensive) { color: red; }
+    ::content div { color: grey; }
+    ::content div.unit-name { color: red; }
   </style>
   <div>
     <content></content>
