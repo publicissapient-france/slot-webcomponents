@@ -86,7 +86,7 @@ Le navigateur se charge de résoudre `my-zooka` et d'encapsuler le markup dans u
 
 --
 
-Les web components sont un ensemble de technologies :
+## Web components
 
 * [Custom Element](http://www.html5rocks.com/en/tutorials/webcomponents/customelements/)
 * [HTML Templates](http://www.html5rocks.com/en/tutorials/webcomponents/template/)
@@ -100,7 +100,7 @@ Les web components sont un ensemble de technologies :
 
 --
 
-Depuis *juillet 2014* la [W3C](http://www.w3.org/wiki/WebComponents/) propose un début de spécification pour les web components.
+*Juillet 2014* : début de spécification pour les web components [W3C](http://www.w3.org/wiki/WebComponents/)
 
 --
 
@@ -112,7 +112,7 @@ source : [are-we-componentized-yet](http://jonrimmer.github.io/are-we-componenti
 
 --
 
-A partir de ces spécifications des bibliothèques permettent la compatibilité.
+## Compatibilité
 
 * [Polyfill](http://webcomponents.org/polyfills/)
 * [Polymer](https://www.polymer-project.org/)
@@ -133,22 +133,22 @@ A partir de ces spécifications des bibliothèques permettent la compatibilité.
 
 --
 
-Les `Custom Elements` sont des objets dont l'interface est défini par le développeur.
+## Objet HTML // interface défini par le développeur
 
-Les nouveaux éléments DOM ainsi créées permettent de :
+### Permissions
 
-1. Définir des nouveaux éléments HTML/DOM
-1. Etendre d'autres éléments ex. : [HTMLButtonElement](https://developer.mozilla.org/en/docs/Web/API/HTMLButtonElement)
-1. Encapsuler des fonctionnalités sur mesure
-1. Etendre l'API d'élément HTML/DOM existants
+1. Nouveaux éléments HTML/DOM
+1. Héritage
+1. Encapsulation
+1. Extension de l'API
 
 --
 
 ## Définir un nouvel élément
 
-Le nom du composant doit contenir un caractère`U+002D HYPHEN-MINUS` et **ne doit pas** contenir des caractères ASCII en majuscule. [W3C](http://w3c.github.io/webcomponents/spec/custom/#dfn-custom-element-type).
+Le nom contient un caractère`U+002D HYPHEN-MINUS` et **ne doit pas** contenir des caractères ASCII en majuscule. [W3C](http://w3c.github.io/webcomponents/spec/custom/#dfn-custom-element-type).
 
-Certains noms sont réservées :
+Certains noms réservés :
 
 * annotation-xml
 * color-profile
@@ -159,14 +159,12 @@ Certains noms sont réservées :
 --
 
 
-## Cycle de vie et callbacks
+## Callbacks
 
-Le `Custom Element` traverse différents états durant son [cycle de vie](http://w3c.github.io/webcomponents/spec/custom/#dfn-lifecycle-callbacks).
-
-* `createdCallback` appelé après la création et l'enregistrement de la définition de l'élément.
-* `attachedCallback` appelé à l'insertion de l'élément dans le document lorsque celui-ci a un contexte.
-* `detachedCallback` appelé à la suppression de l'élément du document lorsque celui-ci a un contexte.
-* `attributeChangedCallback` appelé au changement d'attributs de l'élément.
+* `createdCallback`
+* `attachedCallback`
+* `detachedCallback`
+* `attributeChangedCallback`
 
 --
 
