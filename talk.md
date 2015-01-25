@@ -343,26 +343,15 @@ Un import HTML aujourd'hui c'est :
 
 Shadow host
 ```html
-<div id="boomBeachName">Rifleman</div>
+<div id="boomUnit">Rifleman</div>
 ```
 
-Shadow root
-```html
-<template id="headquartersTemplate">
-<style>
-   div { color: red; }
-</style>
-<div>
-    My name is <content></content>
-</div>
-</template>
-```
-
+Shadow dom
 ```javascript
-var shadow = document.getElementById('boomBeachName').createShadowRoot();
-var template = document.getElementById('headquartersTemplate');
-var clone = document.importNode(template.content, true);
-shadow.appendChild(clone);
+var shadow = document.getElementById('boomUnit').createShadowRoot();
+shadow.innerHTML =
+    "<style>div { color: red; }</style>" +
+    "<div>My name is <content></content></div>";
 ```
 
 --
@@ -375,7 +364,7 @@ Rendering
 
 DOM Généré
 ```html
-<div id="boomBeachName">
+<div id="boomUnit">
   #shadow-root
   |  <style>
   |    div {
@@ -469,6 +458,7 @@ Shadow host
     <span class="unit-name">Grenadier</span>
     <span class="training-time">15 minutes (training) </span>
     <span class="hq-level">16 (HQ)</span>
+    <div>The Grenadier is a big and powerful long-range unit</div>
 </div>
 ```
 
@@ -507,6 +497,7 @@ DOM Généré
   <span class="unit-name">Grenadier</span>
   <span class="training-time">15 minutes</span>
   <span class="hq-level">16</span>
+  <div>The Grenadier is a big and powerful long-range unit</div>
 </div>
 ```
 
@@ -560,17 +551,17 @@ DOM Généré
 
 ```html
 <body class="offensive">
-  <button class="btn">
+  <div id="unitName">
     #shadow-root
     |  <style>
-    |    :host-context(.defensive) { color: green }
-    |    :host-context(.offensive) { color: red }
+    |    :host-context(.defensive) { color: green; }
+    |    :host-context(.offensive) { color: red; }
     |  </style>
     |  <div>
     |    <content></content>
     |  </div>
-    "Zooka"
-  </button>
+    "Tank"
+  </div>
 </body>
 ```
 
