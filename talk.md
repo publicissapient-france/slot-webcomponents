@@ -9,7 +9,6 @@
 # Plan de mission
 
 * Aujourd'hui
-* Réponse ciblée
 * Renforts
 * Règlement
 * Caserne
@@ -64,8 +63,8 @@ Le code du plugin est partagé avec celui de la page : collisions multiples.
 
 --
 
-# Réponse ciblée
-> ENCAPSULATION
+# Problème
+> PAS D'ENCAPSULATION
 
 ---
 
@@ -192,13 +191,14 @@ var ZookaButtonPrototype = Object.create(HTMLElement.prototype);
 ZookaButtonPrototype.who = function() {
   alert('Zooka!');
 }
-document.registerElement('zooka-button', {prototype: ZookaButtonPrototype});
+document.registerElement('zooka-button',
+  {prototype: ZookaButtonPrototype});
 ```
 
 --
 
 #### Avec des `callbacks` c'est mieux :).
-
+[Exemple](example/custom-element0.html)
 ```javascript
 var ZookaButtonPrototype = Object.create(HTMLElement.prototype);
 ZookaButtonPrototype.who = function() {...}
@@ -210,11 +210,11 @@ ZookaButtonPrototype.createdCallback = function() {
 document.registerElement('zooka-button',
   {prototype: ZookaButtonPrototype});
 ```
-[Exemple](example/custom-element0.html)
 
 --
 
 #### On change le contenu du `Custom Element` ?
+[Exemple](example/custom-element1.html)
 ```javascript
 var ZookaButtonPrototype = Object.create(HTMLElement.prototype);
 ZookaButtonPrototype.who = function() {...}
@@ -225,7 +225,6 @@ ZookaButtonPrototype.createdCallback = function() {
 document.registerElement('zooka-button',
   {prototype: ZookaButtonPrototype});
 ```
-[Exemple](example/custom-element1.html)
 
 ---
 
@@ -234,7 +233,7 @@ document.registerElement('zooka-button',
 --
 
 #### Possibilité d'utiliser des templates HTML
-
+[Exemple](example/custom-element2.html)
 ```html
 <template id="zooka-template">
   <b>I am a zooka button from template</b>
@@ -247,12 +246,11 @@ ZookaButtonPrototype.createdCallback = function() {
   this.addEventListener('click', function(e) {...});
   var template = document.getElementById('zooka-template');
   var clone = document.importNode(template.content, true);
-  this.innerHTML = clone;
+  this.appendChild(clone);
 }
 document.registerElement('zooka-button',
-{prototype: ZookaButtonPrototype});
+  {prototype: ZookaButtonPrototype});
 ```
-[Exemple](example/custom-element2.html)
 
 ---
 
@@ -278,18 +276,19 @@ Un import HTML aujourd'hui c'est :
 
 --
 
+[Exemple](example/custom-element3.html)
 ```html
 <template>...</template>
-```
-```javascript
-(function() {
-  var importDoc = document.currentScript.ownerDocument;
-  var ZookaButtonPrototype = Object.create(HTMLElement.prototype);
-  ZookaButtonPrototype.who = function() {...}
-  ZookaButtonPrototype.createdCallback = function() {...}
-  document.registerElement('zooka-button',
-    {prototype: ZookaButtonPrototype});
-})()
+<script>
+  (function() {
+    var importDoc = document.currentScript.ownerDocument;
+    var ZookaButtonPrototype = Object.create(HTMLElement.prototype);
+    ZookaButtonPrototype.who = function() {...}
+    ZookaButtonPrototype.createdCallback = function() {...}
+    document.registerElement('zooka-button',
+      {prototype: ZookaButtonPrototype});
+  })()
+<script>
 ```
 
 ```html
@@ -297,11 +296,9 @@ Un import HTML aujourd'hui c'est :
   <head>
     <link rel="import" href="zooka-button.html">
   </head>
-  <body></body>
+  <body><zooka-button></zooka-button></body>
 </html>
 ```
-
-[Exemple](example/custom-element3.html)
 
 > Attention au CORS.
 
@@ -336,6 +333,8 @@ Un import HTML aujourd'hui c'est :
 --
 
 ## Shadow boundary
+
+> Shadow Mitard ?
 
 --
 
@@ -517,6 +516,8 @@ DOM Généré
 
 * Selectors ne traversent pas le shadow boundary
 * Encapsulation des styles du monde externe
+
+> Mitard du style ?
 
 --
 
