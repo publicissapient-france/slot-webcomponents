@@ -8,4 +8,4 @@
 
 > Un champ de recherche d'unité.
 
-[Exercice 0](workshop/ce.md) >  Custom Element
+[Exercice 0](ce.md) >  Custom Element

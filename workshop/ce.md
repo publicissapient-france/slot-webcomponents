@@ -14,4 +14,4 @@ Il est composé d'une image centrale et de deux boutons latéraux.
 
 Faites en sorte qu'en cliquant sur l'un, ou l'autre des deux boutons, les images changent.
 
-[Exercice 1](workshop/html_template.md) > HTML Template
+[Exercice 1](html_template.md) > HTML Template

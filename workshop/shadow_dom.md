@@ -10,4 +10,4 @@ Ajoutez cette `div` également dans votre template. Pourquoi la div n'est pas im
 
 Comment faire pour appliquer le style depuis l'extérieur du web component ?
 
-[Exercice 3](workshop/communication.md) > Communication
+[Exercice 3](communication.md) > Communication
