@@ -4,6 +4,8 @@ Bravo, si vous êtes arrivé jusqu'à cet exercice c'est que vous commencez à c
 
 Plus qu'une seule chose, comment communiquer depuis le custom element, vers la page et de la page vers le custom element ?
 
+![Communication](input.png "Communication")
+
 ### Custom element > page
 
 Créez un champ `<input>`.
