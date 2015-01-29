@@ -1,3 +1,6 @@
+> [Présentation](https://github.com/xebia-france/slot-webcomponents)
+> [Workshop](https://github.com/xebia-france/slot-webcomponents/blob/gh-pages/workshop/workshop.md)
+
 > Basé sur l'excellent outil [revealjs](http://lab.hakim.se/reveal-js/) merci !
 
 ### MAJ des slides
