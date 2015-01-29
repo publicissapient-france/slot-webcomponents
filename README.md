@@ -1,4 +1,4 @@
-> [Présentation](https://github.com/xebia-france/slot-webcomponents)
+> [Présentation](https://xebia-france.github.io/slot-webcomponents)
 
 > [Workshop](https://github.com/xebia-france/slot-webcomponents/blob/gh-pages/workshop/workshop.md)
 
