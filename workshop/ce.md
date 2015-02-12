@@ -1,6 +1,6 @@
 ## Custom Element
 
-L'objectif de cette exercice est de créer un custom element.
+L'objectif de cet exercice est de créer un custom element.
 
 Le custom element doit se présenter sous la forme de :
 
