@@ -1,8 +1,8 @@
 ## Communication
 
-Bravo, si vous êtes arrivé jusqu'à cet exercice c'est que vous commencez à comprendre comment fonctionne les custom elements.
+Bravo, si vous êtes arrivé jusqu'à cet exercice c'est que vous commencez à comprendre comment fonctionne les web components.
 
-Plus qu'une seule chose, comment communiquer depuis le custom element, vers la page et de la page vers le custom element ?
+Plus qu'une seule chose, comment communiquer depuis le web component, vers la page et de la page vers le web component ?
 
 ![Communication](input.png "Communication")
 
