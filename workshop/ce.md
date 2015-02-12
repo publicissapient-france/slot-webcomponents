@@ -2,8 +2,6 @@
 
 L'objectif de cette exercice est de créer un custom element.
 
-![Carrousel]
-
 Le custom element doit se présenter sous la forme de :
 
 ```
