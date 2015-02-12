@@ -694,8 +694,11 @@ Host
 Component ⇾
 ```javascript
 var proto = Object.create(HTMLElement.prototype);
+var importDoc = document.currentScript.ownerDocument;
 proto.createdCallback = function() {
-	// shadow DOM management ...
+	var template = importDoc.getElementById('#template');
+	var clone = template.content.cloneNode(true);
+	this.createShadowRoot().appendChild(clone);
 
 	this.addEventListener('click', function(e) {
 		this.dispatchEvent(new Event('fire-tank'));
@@ -715,12 +718,12 @@ document.addEventListener('fire-tank', function (event) {
 
 ## Host ⇾ Component
 
-* par surveillance des attibuts
+* par surveillance des attributs
 * par des méthodes du prototype
 
 --
 
-### Par surveillance des attibuts
+### Par surveillance des attributs
 
 Host ⇾
 ```javascript
