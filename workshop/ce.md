@@ -3,7 +3,7 @@
 L'objectif de cet exercice est de créer le nouveau html element `<boom-carrousel/>`.
 
 
-Suivez ce [lien](http://xebia-france.github.io/slot-webcomponents/workshop/img/images.zip) pour recuperer les images. Sinon, vous pouvez directement utliser le tableau [json](images.json) avec les liens externes.
+> Suivez ce [lien](http://xebia-france.github.io/slot-webcomponents/workshop/img/images.zip) pour recuperer les images. Sinon, vous pouvez directement utliser le tableau [json](images.json) avec les liens externes.
 
 
 - créer `index.html`
