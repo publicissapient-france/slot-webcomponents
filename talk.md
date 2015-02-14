@@ -304,7 +304,7 @@ Un import HTML aujourd'hui c'est :
 
 # Shadow DOM
 
-> Encapsulation in action
+> [Encapsulation in action](http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/)
 
 --
 
@@ -503,6 +503,8 @@ DOM Généré
 ## [Shadow DOM Visualizer](http://html5-demos.appspot.com/static/shadowdom-visualizer/index.html)
 
 > By Eric Bidelman
+
+![tableau des compatibilités](image/shadow-dom-visualizer.png)
 
 --
 

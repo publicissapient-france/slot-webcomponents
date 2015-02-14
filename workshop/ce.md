@@ -1,32 +1,15 @@
 ## Custom Element
 
-L'objectif de cet exercice est de créer un custom element.
+L'objectif de cet exercice est de créer le nouveau html element `<boom-carrousel/>`.
 
-Le custom element doit se présenter sous la forme de :
 
-```
-<boom-carrousel>
-  /* contenu HTML réprésentant le carrousel */
-</boom-carrousel>
-```
+Suivez ce [lien](http://xebia-france.github.io/slot-webcomponents/workshop/img/images.zip) pour recuperer les images. Sinon, vous pouvez directement utliser le tableau [json](images.json) avec les liens externes.
 
-![Carrousel](carrousel.png "Custom element")
 
-Il est composé d'une image centrale et de deux boutons latéraux.
+- créer `index.html`
+- dans une balise `<script>` créer er enregistrer le nouveau custom element `<boom-carrousel/>` 
+- utiliser `innerHTML` pour ajouter une première image 
+- utiliser votre custom element et verifier on fonctionnement
+- ajouter 2 boutons: Previous (`&olt;`) et Next (`&ogt;`) dans voutre nouveau élément
 
-URL des images :
-
-```
-  [
-  'http://www.playboombeach.com/wp-content/uploads/grenadier.png?54c28a',
-  'http://www.playboombeach.com/wp-content/uploads/heavy.png?54c28a',
-  'http://www.playboombeach.com/wp-content/uploads/medic.png?54c28a',
-  'http://www.playboombeach.com/wp-content/uploads/rifleman.png?54c28a',
-  'http://www.playboombeach.com/wp-content/uploads/scorcher.png?54c28a',
-  'http://www.playboombeach.com/wp-content/uploads/tank.png?54c28a',
-  'http://www.playboombeach.com/wp-content/uploads/warrior.png?54c28a',
-  'http://www.playboombeach.com/wp-content/uploads/zooka.png?54c28a'
-  ]
-```
-
-[Exercice 1](html_template.md) > HTML Template
+[Prev](workshop.md) [Next](html_template.md)

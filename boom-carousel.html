@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+
+
+<boom-carrousel></boom-carrousel>
+
+
+<template id="tpl">
+  <style>
+    button {
+      height: 170px;
+      vertical-align: top;
+      font-size: 3em;
+      border-radius: 28px;
+      outline: none;
+      background: none;
+      border: none;
+      color: gray;
+    }
+
+    button:hover {
+      color: #000000;
+    }
+  </style>
+
+  <button>&olt;</button>
+  <img src='http://xebia-france.github.io/slot-webcomponents/workshop/img/grenadier.png'></img>
+  <button>&ogt;</button>
+</template>
+
+<script>
+  var importDoc = document.currentScript.ownerDocument;
+
+  var Boom = Object.create(HTMLElement.prototype);
+
+  Boom.createdCallback = function () {
+    var template = importDoc.getElementById('tpl');
+    var clone = document.importNode(template.content, true);
+    this.createShadowRoot().appendChild(clone);
+  };
+
+  document.registerElement('boom-carrousel', {prototype: Boom});
+
+</script>
+
+
+</body>
+</html>

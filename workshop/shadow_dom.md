@@ -1,15 +1,24 @@
 ## Shadow DOM
 
-Au lieu d'ajouter le template directement dans le noeud `<boom-carrousel/>` faites-en sorte de créer un noeud fantôme.
+- au lieu d'ajouter le template directement dans le noeud `<boom-carrousel/>` faites-en sorte de créer un noeud fantôme
+- inspecter le dom créé
 
-![Shadow DOM](shadow.png "Shadow DOM")
+![Shadow DOM](png/shadow.png "Shadow DOM")
 
 ### Encapsulation du CSS
 
-A côté de votre custom element, créez une balise `div` avec la classe `boom-css-encapsulation` et faites en sorte que cette `div` soit visible (customisez le fond, la taille, etc.)
+Ajouter dans `index.html` le snippet suivant : 
+```
+<style>
+  img {
+    background-color: red;
+  }
+</style>
+```
 
-Ajoutez également une autre `div` identique également dans votre page. Pourquoi la div n'est pas impactée par le style ?
-
+Pourquoi il n'y a pas d'impact sur votre component ?
 Comment faire pour appliquer le [style](http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom-201/) depuis l'extérieur du web component ?
 
-[Exercice 3](communication.md) > Communication
+- essayez temporarement de revenir à la version présedent de votre component (sans shadow root)
+
+[Prev](html_import.md) [Next](behaviour.md)
