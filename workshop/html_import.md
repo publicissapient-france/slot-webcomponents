@@ -1,9 +1,9 @@
 ## HTML Import
 
-Actuellement vous n'avez qu'une seule fichier `index.html`.
+Actuellement vous n'avez qu'un seul fichier `index.html`.
 
 - faites en sorte d'isoler votre web component dans un autre fichier
-- l'importer dans `index.html`
+- importez-le dans `index.html`
 
 
 
