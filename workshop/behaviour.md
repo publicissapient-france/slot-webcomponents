@@ -1,6 +1,6 @@
-## Carousel comportement
+## Jouer avec le carrousel
 
-Implementer le comportement de votre carousel component.
+Implementez le comportement de votre carousel component.
 
 - next button
 - previous button
