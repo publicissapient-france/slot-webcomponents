@@ -1,14 +1,14 @@
 ## Shadow DOM
 
 - au lieu d'ajouter le template directement dans le noeud `<boom-carrousel/>` faites-en sorte de créer un noeud fantôme
-- inspecter le dom créé
+- inspectez le DOM créé
 
 Vous devez avoir quelque chose comme ça:
 ![Shadow DOM](png/shadow.png "Shadow DOM")
 
 ### Encapsulation du CSS
 
-Ajouter dans `index.html` le snippet suivant : 
+Ajouter dans `index.html` le code suivant : 
 ```
 <style>
   img {
