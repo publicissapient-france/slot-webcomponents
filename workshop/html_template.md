@@ -3,7 +3,7 @@
 L'objectif de ce second exercice, est d'utiliser un `<template>`.
 
 - ajoutez un `<template></template>` dans votre page et injectez ce template dans le custom element à la place de `innerHTML`
-- vous pouvez ajouter un peu de styling:
+- vous pouvez ajouter un peu de styling :
 
 ```
 button {
