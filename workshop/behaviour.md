@@ -1,4 +1,4 @@
-## Jouer avec le carrousel
+## Jouons avec le carrousel
 
 Implementez le comportement de votre carousel component.
 
