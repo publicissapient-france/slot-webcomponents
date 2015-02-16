@@ -7,8 +7,8 @@ Actuellement vous n'avez qu'un seul fichier `index.html`.
 
 
 
-**Tip #1:** pour acceder au document isolé utilisez `document.currentScript.ownerDocument`
+**Tip #1 :** pour acceder au document isolé utilisez `document.currentScript.ownerDocument`
 
-**Tip #2:** allez regarder du côté de [HTML Import](http://www.html5rocks.com/en/tutorials/webcomponents/imports/).
+**Tip #2 :** allez regarder du côté de [HTML Import](http://www.html5rocks.com/en/tutorials/webcomponents/imports/).
 
 [Prev](html_template.md) [Next](shadow_dom.md)
