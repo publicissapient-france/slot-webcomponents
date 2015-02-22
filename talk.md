@@ -440,7 +440,7 @@ DOM Généré
   |     HQ Level: <content select=".hq-level"></content> <br>
   |  </div>
   <span class="unit-name">Grenadier</span>
-  <span clas="training-time">15 minutes</span>
+  <span class="training-time">15 minutes</span>
   <span class="hq-level">16</span>
 </div>
 ```
