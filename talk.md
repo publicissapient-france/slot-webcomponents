@@ -308,7 +308,7 @@ Un import HTML aujourd'hui c'est :
 
 --
 
-#### Les développeurs doivent pouvoir agir<br> comme les éditeurs de navigateurs
+#### Developers should be free to act like browser vendors, extending the vocabulary of HTML itself.
 
 [Mark Dalgleish](http://markdalgleish.com/)
 
