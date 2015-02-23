@@ -25,6 +25,6 @@ Ajouter dans `index.html` le code suivant :
 
 Votre composant est impacté, le fond est rouge.
 
-Comment faire pour que le style extérieur n'impacte pas votre composant ?
+Comment faire pour que le style extérieur n'impacte pas votre composant (Cliquez sur Next) ?
 
 [Prev](html_template.md) [Next](shadow_dom.md)
