@@ -10,6 +10,6 @@ L'objectif de cet exercice est de créer le nouveau html element `<boom-carrouse
 - dans une balise `<script>` créez et enregistrez le nouveau custom element `<boom-carrousel/>` 
 - utilisez `innerHTML` pour ajouter une première image 
 - utilisez votre custom element et verifiez son fonctionnement
-- ajoutez 2 boutons: Previous (`&olt;`) et Next (`&ogt;`) dans votre nouvel élément
+- ajoutez 2 boutons (sans logique) : Previous (`&olt;`) et Next (`&ogt;`) dans votre nouvel élément
 
 [Prev](workshop.md) [Next](html_template.md)
