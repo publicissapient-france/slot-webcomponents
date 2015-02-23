@@ -8,18 +8,8 @@ Vous devez avoir quelque chose comme ça:
 
 ### Encapsulation du CSS
 
-Ajouter dans `index.html` le code suivant : 
-```
-<style>
-  img {
-    background-color: red;
-  }
-</style>
-```
+L'image n'a plus de fond rouge ! Mircale :). C'est l'encapsulation.
 
-Pourquoi il n'y a pas d'impact sur votre component ?
-Comment faire pour appliquer le [style](http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom-201/) depuis l'extérieur du web component ?
-
-- essayez temporarement de revenir à la version présedent de votre component (sans shadow root)
+Essayez d'appliquer le fond rouge sur les images du carrousel depuis le style défini globalement dans l'`index.html`
 
 [Prev](html_import.md) [Next](behaviour.md)
