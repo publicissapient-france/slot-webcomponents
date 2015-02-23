@@ -10,5 +10,5 @@
 
 ![Résultat final](png/final.png "Boom Beach Carrousel")
 
-[Commencer exercice](ce.md)
+[Commencer l'exercice](ce.md)
 
