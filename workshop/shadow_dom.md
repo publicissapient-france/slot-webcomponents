@@ -10,6 +10,6 @@ Vous devez avoir quelque chose comme ça:
 
 L'image n'a plus de fond rouge ! Mircale :). C'est l'encapsulation.
 
-Essayez d'appliquer le fond rouge sur les images du carrousel depuis le style défini globalement dans l'`index.html`
+Essayez d'appliquer le fond rouge sur les images du carrousel depuis le [style](http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom-201/) défini globalement dans l'`index.html`
 
 [Prev](html_import.md) [Next](behaviour.md)
