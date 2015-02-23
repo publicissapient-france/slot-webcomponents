@@ -1,4 +1,4 @@
-## Communication
+## Communication (API du composant)
 
 Bravo, si vous êtes arrivé jusqu'à cet exercice c'est que vous commencez à comprendre comment fonctionnent les web components.
 
