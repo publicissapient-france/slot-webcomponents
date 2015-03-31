@@ -338,18 +338,25 @@ Un import HTML aujourd'hui c'est :
 
 ### [Example](example/shadow-dom-0.html)
 
-Shadow host
+index.html 
+
 ```html
-<div id="boomUnit">Rifleman</div>
+<!doctype html>
+<html>
+<body>
+    <div id="boomUnit">Rifleman</div>
+</body>
+</html>
 ```
 
-Shadow dom
-```javascript
+Create shadow dom
+<pre><code class="html"><script>
 var shadow = document.getElementById('boomUnit').createShadowRoot();
 shadow.innerHTML =
     "<style>div { color: red; }</style>" +
     "<div>My name is <content></content></div>";
-```
+</script>
+</code></pre>
 
 --
 
@@ -396,13 +403,15 @@ DOM Généré
 
 ### [Example #1](example/shadow-dom-1.html)
 
-Shadow host
 ```html
+<!doctype html>                                 <!-- index.html -->
+<html><body>
 <div id="boomUnit">
     <span class="unit-name">Grenadier</span>
     <span class="training-time">15 minutes</span>
     <span class="hq-level">16</span>
 </div>
+</body></html>
 ```
 
 Shadow element
@@ -435,9 +444,9 @@ DOM Généré
 <div id="boomUnit">
   #shadow-root
   |  <div>
-  |     Unit name: <content select=".unit-name"></content> <br>
-  |     Training time: <content select=".training-time"></content> <br>
-  |     HQ Level: <content select=".hq-level"></content> <br>
+  |     Unit name: <content select=".unit-name"></content>
+  |     Training time: <content select=".training-time"></content>
+  |     HQ Level: <content select=".hq-level"></content>
   |  </div>
   <span class="unit-name">Grenadier</span>
   <span class="training-time">15 minutes</span>
@@ -449,14 +458,16 @@ DOM Généré
 
 ### [Example #2](example/shadow-dom-2.html)
 
-Shadow host
 ```html
+<!doctype html>                                 <!-- index.html -->
+<html><body>
 <div id="boomUnit">
     <span class="unit-name">Grenadier</span>
-    <span class="training-time">15 minutes (training) </span>
+    <span class="training-time">15 minutes (training)</span>
     <span class="hq-level">16 (HQ)</span>
     <div>The Grenadier is a big and powerful long-range unit</div>
 </div>
+</body></html>
 ```
 
 Shadow element
@@ -651,33 +662,6 @@ Host
 #troops /deep/ .level-2 { color: orange; }
 </style>
 ```
-
---
-
-### CSS Variables
-
-Shadow
-```html
-<template id="nameTagTemplate">
-<style>
-   span {
-      color: var(--my-text-color, pink);
-   }
-</style>
-<span>WebComponents</span>
-</template>
-```
-
-Host
-```html
-<style>
- #host {
-   --my-text-color: green;
- }
-</style>
-```
-
-[Disponible](http://caniuse.com/#feat=css-variables) seulement sur Firefox
 
 ---
 
